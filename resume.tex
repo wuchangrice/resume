@@ -20,10 +20,12 @@
 \section{\faUsers\ Experience}
 \datedsubsection{\textbf{SOHU Inc.} Beijing, China}{Jan. 2018 -- Present}
 \role{Member of Infrastructure Team in Intelligent Recommendation Platform}{}
-Recall service.
+Refactoring recall service from java map to Apache Thrift.
 \begin{itemize}
   \item In charge of offline index creation, recall service server maintenance and recall service client development.
   \item Used multithread and protobuffer to generate offline index. Used TServiceClient and BasePooledObjectFactory to form thrift client.
+  \item Used kafka, thrift to make real-time recall index.
+  \item Reduced recall service timeout rate from 1.5‰ to 0.12‰.
 \end{itemize}
 
 \datedsubsection{\textbf{Renrenche Inc.} Beijing China}{July. 2015 -- Jan. 2018}
