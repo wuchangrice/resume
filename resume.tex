@@ -19,53 +19,45 @@
 
 \section{\faUsers\ Experience}
 \datedsubsection{\textbf{SOHU Inc.} Beijing, China}{Jan. 2018 -- Present}
-Refactor recall service from Java map to Apache Thrift.
-\newline Role: Member of Infrastructure Team in Intelligent Recommendation Platform
+Refactor recall service from Java cache to Apache Thrift.
+\newline Role: Leader of Recall Service
 \begin{itemize}
-  \item xxl-job , drools, tcpcopy, canel,es
-  \item In charge of offline index creation, recall service server maintenance and recall service client development.
-  \item Used multithread and protobuffer to generate offline index. Used TServiceClient and BasePooledObjectFactory to form thrift client.
-  \item Used kafka, thrift to make real-time recall index.
-  \item Reduced recall service timeout rate from 7.5‰ to 0.62‰ and made recall index update-time from 40 min to real-time.
+  \item In charge of offline index's creation, Thrift Server's(C++) maintenance and Thrift Client's(Java) development.
+  \item Thrift Server used TNonblockingServer to deal with recall request and mmap to load index file.Thrift Client used BasePooledObjectFactory to manage connections.
+  \item Used Kafka, Thrift to push new data to Thrift Server and made new data can be recalled real-time.
+  \item Reduced recall service timeout(30ms) rate from 7.5‰ to 0.62‰ and made the index's update-time from 40 min to real-time.
 \end{itemize}
 
 \datedsubsection{\textbf{Renrenche Inc.} Beijing China}{July. 2015 -- Jan. 2018}
 Refactor the insurance and loan modules from PHP CodeIgniter to Java SpringBoot.
 \newline Role: Leader of Insurance and Loan Modules
 \begin{itemize}
-  \item Used kafka to get insurance clue and used Activiti to create workflow to invite subscription for a loan.
   \item Decoupled the insurance and loan modules from the main module and reduced the pressure of the key database.
+  \item Used Kafka to get insurance clue from the dealed cars information and made the insurance fee and loan service fee can be paid through WeChat Pay.
 \end{itemize}
 
-Use proxy pattern to encapsulate WeChat payment interface.
-\newline Role: Member of Pay Center Project
-\begin{itemize}
-  \item Made the insurance fee and loan service fee could be paid online and the project could be easily expanded to other means of payment.
-\end{itemize}
-
-Evaluate second-hand car's price
+Evaluate pre-owned car's price
 \newline Role: Member of Big-Data Department
 \begin{itemize}
-  \item Used empirical model to calculate second-hand car's price.
-  \item Designed and implemented data crawling, data cleaning and data training. 
+  \item Used empirical model based on city, car model, used years to calculate pre-owned car's price.
+  \item Designed and implemented data crawling, data cleaning and data training.
   \item Build up a website by using PHP CodeIgniter framework to make the evaluation as a product.
+  \item The accuracy(The difference between real price and the evaluated price within 10\%) was 75.5\% and the bad case(the difference beyond 20\%) was 6.2\%.The result was as the same accuracy as Che300(A professional company focused on pre-owned car's price evaluation).
 \end{itemize}
 
 \datedsubsection{\textbf{TRIAL Inc.} Fukuoka JAPAN}{Mar. 2011 -- Dec. 2014}
-Daily Foods Ordering-System
-\newline Role: Data Scientist
+Daily Foods Order System
+\newline Role: Data Analyst && Product Manager
 \begin{itemize}
-  \item Determined a better forecast method among three week avaverage, exponential smoothing, ARIMA.
-  \item Found a calculate-method of daily food’s stock. Designed an Ordering-System by stock, sale forecast and leadtime.
-  \item Introduced a way to calculate a better ordering unit.
-  \item By the daily foods ordering system, cut down the daily foods's lost rate from 1.8\% to 1\% and reduced order time from 20 hours per week to 6 hours per week.
+  \item Found a way to calculate daily food’s stock and designed an Order System based on stock, sale forecast and leadtime.
+  \item The Daily Foods Order System cut down the daily foods's lost rate from 1.85\% to 0.96\% and reduced order time from 20 hours per week to 6 hours per week.
 \end{itemize}
 
 \section{\faCogs\ Skills}
 \begin{itemize}[parsep=0.5ex]
-  \item Programming Languages: Java > PHP > C++ > Python
-  \item Platform: Linux
-  \item Databases: MySQL > Redis > Memcached
+  \item Programming Languages: Java > C++ > PHP > Python
+  \item Databases: Redis > MySQL > Memcached
+  \item Good at data structure and algorithm
 \end{itemize}
 
 \end{document}
