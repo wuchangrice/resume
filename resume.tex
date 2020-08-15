@@ -19,12 +19,15 @@
 
 \section{\faUsers\ Experience}
 \datedsubsection{\textbf{SOHU Inc.} Beijing, China}{Jan. 2018 -- Present}
-Refactor recall service from Java cache to Apache Thrift.
+Refactor recall service from Java map to Apache Thrift
 \newline Role: Leader of Recall Service
 \begin{itemize}
-  \item In charge of offline index's creation, Thrift Server's(C++) maintenance and Thrift Client's(Java) development.
-  \item Thrift Server used TNonblockingServer to deal with recall request and mmap to load index file.Thrift Client used BasePooledObjectFactory to manage connections.
-  \item Used Kafka, Thrift to push new data to Thrift Server and made new data can be recalled real-time.
+  \item Index creation: got data from Redis, Hdfs to form recall index. Used Drools and bitmap to mark filter rules in index.
+  \item Thrift Server: used TNonblockingServer to deal with recall request and used mmap to load index file to memory.
+  \item Thrift Client: used BasePooledObjectFactory to manage connections.
+  \item Index configure management: used SpringBoot, MySQL, VUE to manage index configure.
+  \item Monitor: used Graana and InfluxDB to monitor request's QPS, latency etc.
+  \item Real-time capacity: used Kafka, Thrift to push new data to Thrift Server and made new data can be recalled real-time.
   \item Reduced recall service timeout(30ms) rate from 7.5‰ to 0.62‰ and made the index's update-time from 40 min to real-time.
 \end{itemize}
 
