@@ -20,27 +20,34 @@
 \section{\faUsers\ Experience}
 \datedsubsection{\textbf{SOHU Inc.} Beijing, China}{Jan. 2018 -- Present}
 Refactor recall service from Java map to Apache Thrift
-\newline Role: Leader of Recall Service
 \begin{itemize}
   \item Index creation: got data from Redis, Hdfs to form recall index. Used Drools and bitmap to mark filter rules in index.
   \item Thrift Server: used TNonblockingServer to deal with recall request and used mmap to load index file to memory.
   \item Thrift Client: used BasePooledObjectFactory to manage connections.
+  \item Reduced recall service timeout(30ms) rate from 7.5‰ to 0.62‰.
+\end{itemize}
+
+Make recall service real-time
+\begin{itemize}
+  \item used Kafka, Thrift to push new data to Thrift Server.
+  \item used shared_lock and uique_lock to manage real-time data.
+  \item cut down the recall index's update-time from 40 min to real-time
+\end{itemize}
+
+Recall config management and service moinitor
+\begin{itemize}
   \item Index configure management: used SpringBoot, MySQL, VUE to manage index configure.
   \item Monitor: used Graana and InfluxDB to monitor request's QPS, latency etc.
-  \item Real-time capacity: used Kafka, Thrift to push new data to Thrift Server and made new data can be recalled real-time.
-  \item Reduced recall service timeout(30ms) rate from 7.5‰ to 0.62‰ and made the index's update-time from 40 min to real-time.
 \end{itemize}
 
 \datedsubsection{\textbf{Renrenche Inc.} Beijing China}{July. 2015 -- Jan. 2018}
 Refactor the insurance and loan modules from PHP CodeIgniter to Java SpringBoot.
-\newline Role: Leader of Insurance and Loan Modules
 \begin{itemize}
   \item Decoupled the insurance and loan modules from the main module and reduced the pressure of the key database.
   \item Used Kafka to get insurance clue from the dealed cars information and made the insurance fee and loan service fee can be paid through WeChat Pay.
 \end{itemize}
 
 Evaluate pre-owned car's price
-\newline Role: Member of Big-Data Department
 \begin{itemize}
   \item Used empirical model based on city, car model, used years to calculate pre-owned car's price.
   \item Designed and implemented data crawling, data cleaning and data training.
@@ -50,7 +57,6 @@ Evaluate pre-owned car's price
 
 \datedsubsection{\textbf{TRIAL Inc.} Fukuoka JAPAN}{Mar. 2011 -- Dec. 2014}
 Daily Foods Order System
-\newline Role: Data Analyst and Product Manager
 \begin{itemize}
   \item Found a way to calculate daily food’s stock and designed an Order System based on stock, sale forecast and leadtime.
   \item The Daily Foods Order System cut down the daily foods's lost rate from 1.85\% to 0.96\% and reduced order time from 20 hours per week to 6 hours per week.
