@@ -30,7 +30,7 @@ Refactor recall service from Java map to Apache Thrift
 Make recall service real-time
 \begin{itemize}
   \item used Kafka, Thrift to push new data to Thrift Server.
-  \item used shared_lock and uique_lock to manage real-time data.
+  \item used shared-lock and uique-lock to manage real-time data.
   \item cut down the recall index's update-time from 40 min to real-time
 \end{itemize}
 
