@@ -19,12 +19,12 @@
 
 \section{\faUsers\ Experience}
 \datedsubsection{\textbf{SOHU Inc.} Beijing, China}{Jan. 2018 -- Present}
-Refactor recall service from Java map to Apache Thrift
+Refactor the recall-service from Java cache to Apache Thrift. The recall-service which makes use of collaborative filtering, content-based filtering etc is part of recommender systems and it mainly supplies candidate data to recommender systems. Recommender systems can be divided into recall-service(data supporter), rank-service(ctr estimation) and rerank-service(strategy).
 \begin{itemize}
-  \item Index creation: got data from Redis, Hdfs to form recall index. Used Drools and bitmap to mark filter rules in index.
-  \item Thrift Server: used TNonblockingServer to deal with recall request and used mmap to load index file to memory.
-  \item Thrift Client: used BasePooledObjectFactory to manage connections.
-  \item Reduced recall service timeout(30ms) rate from 7.5‰ to 0.62‰.
+  \item Server: Used TNonblockingServer to deal with client connections and service request. Used mmap to load data from disk to RAM. Designed special data structure to support inverted index and used protobuffer to support forward index.
+  \item Client: Used BasePooledObjectFactory to manage connection pool. Calculated the periodical fail rate of each serverNode and dispatched requests to the serverNodes whose fail rate was within the threshold. Test the bad serverNode(whose fail rate was beyond the threshold) background and reset the fail rate when the bad serverNode became normal.
+  \item Test: Used tcpdump and tcpcopy to test the recall-service before deployed to the product environment.
+  \item Reduced recall-service's timeout(30ms) rate from 7.5‰ to 0.62‰.
 \end{itemize}
 
 Make recall service real-time
@@ -53,13 +53,6 @@ Evaluate pre-owned car's price
   \item Designed and implemented data crawling, data cleaning and data training.
   \item Build up a website by using PHP CodeIgniter framework to make the evaluation as a product.
   \item The accuracy(The difference between real price and the evaluated price within 10\%) was 75.5\% and the bad case(the difference beyond 20\%) was 6.2\%.The result was as the same accuracy as Che300(A professional company focused on pre-owned car's price evaluation).
-\end{itemize}
-
-\datedsubsection{\textbf{TRIAL Inc.} Fukuoka JAPAN}{Mar. 2011 -- Dec. 2014}
-Daily Foods Order System
-\begin{itemize}
-  \item Found a way to calculate daily food’s stock and designed an Order System based on stock, sale forecast and leadtime.
-  \item The Daily Foods Order System cut down the daily foods's lost rate from 1.85\% to 0.96\% and reduced order time from 20 hours per week to 6 hours per week.
 \end{itemize}
 
 \section{\faCogs\ Skills}
