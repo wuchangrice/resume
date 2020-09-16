@@ -21,17 +21,23 @@
 \datedsubsection{\textbf{SOHU Inc.} Beijing, China}{Jan. 2018 -- Present}
 Refactor the recall-service from Java cache to Apache Thrift. The recall-service which makes use of collaborative filtering, content-based filtering etc is part of recommender systems and it mainly supplies candidate data to recommender systems. Recommender systems can be divided into recall-service(data supporter), rank-service(ctr estimation) and rerank-service(strategy).
 \begin{itemize}
-  \item Server: Used TNonblockingServer to deal with client connections and service request. Used mmap to load data from disk to RAM. Designed special data structure to support inverted index and used protobuffer to support forward index.
-  \item Client: Used BasePooledObjectFactory to manage connection pool. Calculated the periodical fail rate of each serverNode and dispatched requests to the serverNodes whose fail rate was within the threshold. Test the bad serverNode(whose fail rate was beyond the threshold) background and reset the fail rate when the bad serverNode became normal.
-  \item Test: Used tcpdump and tcpcopy to test the recall-service before deployed to the product environment.
+  \item Server: used TNonblockingServer to deal with client connections and service request. Used mmap to load data from disk to RAM. Designed special data structure to support inverted index and used protobuffer to support forward index.
+  \item Client: used BasePooledObjectFactory to manage connection pool. Calculated the periodical fail rate of each serverNode and dispatched requests to the serverNodes whose fail rate was within the threshold. Test the bad serverNode(whose fail rate was beyond the threshold) background and reset the fail rate when the bad serverNode became normal.
+  \item Test: used tcpdump and tcpcopy to test the recall-service before deployed to the product environment.
   \item Reduced recall-service's timeout(30ms) rate from 7.5‰ to 0.62‰.
 \end{itemize}
 
-Make recall service real-time
+Inverted index support filter rules. When dealing with inverted index, we sometimes need forward index to do some filtering. In this part, we add forward index's filtering result to the inverted index, so we can do forward index filtering while avoiding to query forward index. This helps to increase the query speed.
 \begin{itemize}
-  \item used Kafka, Thrift to push new data to Thrift Server.
-  \item used shared-lock and uique-lock to manage real-time data.
-  \item cut down the recall index's update-time from 40 min to real-time
+  \item Index creation: used drools to mark the filter result in the inverted index.
+  \item Server: added bitmap to inverted index's data structure
+\end{itemize}
+
+Make recall-service to have near real-time search.
+\begin{itemize}
+  \item Client: pushed new data gotten from Kafka to the server by thrift.
+  \item Server: used Segment locking to manage the data recieved from the client. 
+  \item Cut down the recall-service index's update-time from 40 minutes to real-time.
 \end{itemize}
 
 Recall config management and service moinitor
