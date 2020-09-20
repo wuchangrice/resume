@@ -40,25 +40,32 @@ Make recall-service to have near real-time search.
   \item Cut down the recall-service index's update-time from 40 minutes to real-time.
 \end{itemize}
 
-Recall-service config management and recall-service monitor.
+Recall-service configure management and recall-service monitor.
 \begin{itemize}
   \item Configure Management: used SpringBoot, MySQL, VUE to manage the configure.
   \item Monitor: used Grafana and InfluxDB to monitor request's QPS, latency etc.
 \end{itemize}
 
 \datedsubsection{\textbf{Renrenche Inc.} Beijing China}{July. 2015 -- Jan. 2018}
-Refactor the insurance and loan modules from PHP CodeIgniter to Java SpringBoot.
-\begin{itemize}
-  \item Decoupled the insurance and loan modules from the main module and reduced the pressure of the key database.
-  \item Used Kafka to get insurance clue from the dealed cars information and made the insurance fee and loan service fee can be paid through WeChat Pay.
-\end{itemize}
-
 Evaluate pre-owned car's price
 \begin{itemize}
   \item Used empirical model based on city, car model, used years to calculate pre-owned car's price.
   \item Designed and implemented data crawling, data cleaning and data training.
   \item Build up a website by using PHP CodeIgniter framework to make the evaluation as a product.
   \item The accuracy(The difference between real price and the evaluated price within 10\%) was 75.5\% and the bad case(the difference beyond 20\%) was 6.2\%.The result was as the same accuracy as Che300(A professional company focused on pre-owned car's price evaluation).
+\end{itemize}
+
+Support WeChat Pay
+\begin{itemize}
+  \item Used distributed locks with Redis to create an order.
+  \item Used Symmetric-key algorithm to comunicate with WeChat Server
+  \item Used RocketMQ to deal with the failure of notification of the WeChat Server
+\end{itemize}
+
+Refactor the insurance and loan modules from PHP CodeIgniter to Java SpringBoot.
+\begin{itemize}
+  \item Decoupled the insurance and loan modules from the main module to reduced the pressure of the key database.
+  \item Used Kafka to get insurance clue from the dealed cars information and made the insurance fee and loan service fee can be paid through WeChat Pay.
 \end{itemize}
 
 \section{\faCogs\ Skills}
