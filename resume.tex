@@ -18,7 +18,26 @@
 \textit{B.S.} in Statistics
 
 \section{\faUsers\ Experience}
-\datedsubsection{\textbf{SOHU Inc.} Beijing, China}{Jan. 2018 -- Present}
+\datedsubsection{\textbf JD Inc.} Beijing, China}{Nov. 2020 -- now}
+Build up inverted index creation service.
+\begin{itemize}
+  \item Support modifying index config and showing the index content on web site. Use producer-consumer model to manage index's creation. Important index can be backed up and roll back.
+  \item Support recall service and ABtest.
+\end{itemize}
+Forward index service.
+\begin{itemize}
+  \item Used brpc & jsf 
+  \item average time cost 4ms, tp99 10ms.
+\end{itemize}
+
+\begin{itemize}
+  \item 
+  \item average time cost 32ms, tp99 70ms.
+\end{itemize}
+
+
+
+\datedsubsection{\textbf{SOHU Inc.} Beijing, China}{Jan. 2018 -- Nov. 2020}
 Refactor the recall-service from Java cache to Apache Thrift. The recall-service which makes use of collaborative filtering, content-based filtering etc is part of recommender systems and it mainly supplies candidate data to recommender systems. Recommender systems can be divided into recall-service(data supporter), rank-service(ctr estimation) and rerank-service(strategy).
 \begin{itemize}
   \item Server: used TNonblockingServer to deal with client connections and service request. Used mmap to load data from disk to RAM. Designed special data structure to support inverted index and used protobuffer to support forward index.
