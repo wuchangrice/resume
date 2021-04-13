@@ -26,12 +26,12 @@ Build up inverted index creation service.
 \end{itemize}
 Build up forward index service.
 \begin{itemize}
-  \item Used brpc & jsf to build forward index service. Brpc is an industrial-grade RPC framework used through Baidu. Jsf is a high-performance service framework used through JingDong. The forward index service get and cache T+1 data from redis cluster, along with real-time data to form the protobuffer data and return.
+  \item Used brpc and jsf to build forward index service. Brpc is an industrial-grade RPC framework used through Baidu. Jsf is a high-performance service framework used through JingDong. The forward index service get and cache T+1 data from redis cluster, along with real-time data to form the protobuffer data and return.
   \item average time cost is 4ms, tp99 is 10ms.
 \end{itemize}
 Build up rank service.
 \begin{itemize}
-  \item Used brpc & jsf to build rank service. Rank service used user profile and goods profile to predict ctr score for each goods. Rank service used FM(Factorization Machines) model to predict ctr. FM model is a supervised algorithm that can be used for classification, regression, and ranking tasks. The rank service loaded FM model, deal with user profile and goods profile's discretization, and calculated the result.
+  \item Used brpc and jsf to build rank service. Rank service used user profile and goods profile to predict ctr score for each goods. Rank service used FM(Factorization Machines) model to predict ctr. FM model is a supervised algorithm that can be used for classification, regression, and ranking tasks. The rank service loaded FM model, deal with user profile and goods profile's discretization, and calculated the result.
   \item average time cost is 45ms, tp99 is 70ms.
 \end{itemize}
 
